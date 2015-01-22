@@ -1,14 +1,12 @@
-// Date.now with polyfill
-(function (root, factory) {
-	if ( typeof exports === 'object' ) {
-		module.exports = factory();
-	} else {
-		root.Date.now = factory();
-	}
-}(this, function () {
+// Date.now polyfill
+(function () {
 	'use strict';
 
-	return (Date.now || function () {
+	Date.now = Date.now || function () {
 		return (new Date()).getTime();
-	});
-}));
+	};
+
+	if ( typeof exports === 'object' ) {
+		module.exports = Date.now;
+	}
+})();
