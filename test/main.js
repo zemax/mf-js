@@ -1,8 +1,8 @@
 // -- Now
 (function () {
 	var now = require('../modules/date/now');
-	console.log('Date.now: ' + Date.now());
-	console.log('now: ' + now());
+	console.log('Date.now(): ' + Date.now());
+	console.log('now(): ' + now());
 })();
 
 // -- Cookie
@@ -24,17 +24,16 @@
 // requestAnimationFrame
 (function () {
 	var rAF = require('../modules/animation/requestAnimationFrame');
-	console.log(rAF);
 	var r;
 	var f = function () {
-		console.log('requestAnimationFrame !');
+		console.log('requestAnimationFrame');
 
 		r = rAF.requestAnimationFrame(f);
 	};
 	f();
 
 	setTimeout(function () {
-		console.log('cancelAnimationFrame !');
+		console.log('cancelAnimationFrame');
 		rAF.cancelAnimationFrame(r);
 	}, 1000);
 })();
