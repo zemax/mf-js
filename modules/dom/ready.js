@@ -11,8 +11,8 @@
 		stack = [];
 
 	function completed() {
-		document.removeEventListener("DOMContentLoaded", completed, false);
-		window.removeEventListener("load", completed, false);
+		document.removeEventListener('DOMContentLoaded', completed, false);
+		window.removeEventListener('load', completed, false);
 
 		var f;
 		while ( f = stack.shift() ) {
@@ -33,8 +33,8 @@
 		}
 
 		if ( stack.length <= 0 ) {
-			document.addEventListener("DOMContentLoaded", completed, false);
-			window.addEventListener("load", completed, false);
+			document.addEventListener('DOMContentLoaded', completed, false);
+			window.addEventListener('load', completed, false);
 		}
 
 		stack.push(f);
