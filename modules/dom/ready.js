@@ -11,15 +11,22 @@
 		stack = [];
 
 	function completed() {
-		document.removeEventListener('DOMContentLoaded', completed, false);
-		window.removeEventListener('load', completed, false);
+		if ( document.addEventListener || event.type === "load" || document.readyState === "complete" ) {
+			if ( document.addEventListener ) {
+				document.removeEventListener('DOMContentLoaded', completed, false);
+				window.removeEventListener('load', completed, false);
+			} else {
+				document.detachEvent("onreadystatechange", completed);
+				window.detachEvent("onload", completed);
+			}
 
-		var f;
-		while ( f = stack.shift() ) {
-			setTimeout(f, 0);
+			var f;
+			while ( f = stack.shift() ) {
+				setTimeout(f, 0);
+			}
+
+			ready = true;
 		}
-
-		ready = true;
 	}
 
 	function domready(f) {
@@ -33,8 +40,14 @@
 		}
 
 		if ( stack.length <= 0 ) {
-			document.addEventListener('DOMContentLoaded', completed, false);
-			window.addEventListener('load', completed, false);
+			if ( document.addEventListener ) {
+				document.addEventListener('DOMContentLoaded', completed, false);
+				window.addEventListener('load', completed, false);
+			}
+			else {
+				document.attachEvent("onreadystatechange", completed);
+				window.attachEvent("onload", completed);
+			}
 		}
 
 		stack.push(f);
