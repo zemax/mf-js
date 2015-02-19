@@ -1,4 +1,4 @@
-// Provides on & off & trigger functions to build observables
+// Provides on & off & trigger functions to build minimalist observables
 
 // Use code from Dean Edwards, 2005
 // with input from Tino Zijdel, Matthias Miller, Diego Perini
@@ -14,14 +14,18 @@
 }(this, function () {
 	'use strict';
 
-	var guid = 1
+	var guid = 1;
 
 	function hide(obj, prop) {
-		if ( Object.defineProperty ) {
-			Object.defineProperty(obj, prop, {
-				enumerable: false,
-				writable:   true
-			});
+		if ( !!Object.defineProperty ) {
+			try {
+				Object.defineProperty(obj, prop, {
+					enumerable: false
+				});
+			}
+			catch ( e ) {
+				// tant pis
+			}
 		}
 	}
 
@@ -56,12 +60,10 @@
 
 	function triggerEvent(event) {
 		if ( typeof event === 'string' ) {
-			event = new Event(event);
+			event = { type: event };
 		}
 
 		var returnValue = true;
-		// grab the event object (IE uses a global event object)
-		event = event || fixEvent(((this.ownerDocument || this.document || this).parentWindow || window).event);
 
 		// get a reference to the hash table of event handlers
 		if ( this.__events__ && this.__events__[ event.type ] ) {
@@ -77,19 +79,6 @@
 		}
 
 		return returnValue;
-	};
-
-	function fixEvent(event) {
-		// add W3C standard event methods
-		event.preventDefault = fixEvent.preventDefault;
-		event.stopPropagation = fixEvent.stopPropagation;
-		return event;
-	};
-	fixEvent.preventDefault = function () {
-		this.returnValue = false;
-	};
-	fixEvent.stopPropagation = function () {
-		this.cancelBubble = true;
 	};
 
 	return {
