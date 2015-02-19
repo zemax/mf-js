@@ -4,18 +4,20 @@ var test   = require('tape'),
 test('extend', function (t) {
 	var a = {
 		name: 'Bob',
-		age:  36
+		age:  36,
 	};
 
 	var b = {
-		name: 'Alfred',
-		car:  '307 SW'
+		name:    'Alfred',
+		car:     '307 SW',
+		numbers: [ 1, 2, 3 ]
 	};
 
 	var c = {
-		name: 'Alfred',
-		age:  36,
-		car:  '307 SW'
+		name:    'Alfred',
+		age:     36,
+		car:     '307 SW',
+		numbers: [ 1, 2, 3 ]
 	}
 
 	extend(a, b);
