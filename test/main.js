@@ -2,6 +2,7 @@
 require('./tests/core/bind.test');
 require('./tests/core/inherit.test');
 require('./tests/core/extend.test');
+require('./tests/core/observable.test');
 
 // DOM
 require('./tests/dom/ready.test');
