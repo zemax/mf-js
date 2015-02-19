@@ -64,13 +64,15 @@
 		event = event || fixEvent(((this.ownerDocument || this.document || this).parentWindow || window).event);
 
 		// get a reference to the hash table of event handlers
-		var handlers = this.__events__[ event.type ];
+		if ( this.__events__ && this.__events__[ event.type ] ) {
+			var handlers = this.__events__[ event.type ];
 
-		// execute each event handler
-		for ( var i in handlers ) {
-			var handler = handlers[ i ];
-			if ( handler(event) === false ) {
-				returnValue = false;
+			// execute each event handler
+			for ( var i in handlers ) {
+				var handler = handlers[ i ];
+				if ( handler(event) === false ) {
+					returnValue = false;
+				}
 			}
 		}
 
