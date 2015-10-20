@@ -1,21 +1,20 @@
-SOURCES = main.js
-
-DESTINATION = main.build.js
+SOURCES = test/main.js
+DESTINATION = test/main.build.js
 
 #--------------------------------------------------
 # BUILD
 #--------------------------------------------------
 
-.PHONY:	js
+.PHONY:	test
 
-all: js
+all: test
 
 clean:
 	rm ${DESTINATION}
 
 #--------------------------------------------------
-# JS BUILD
+# JS TEST BUILD
 #--------------------------------------------------
 
-js:
+test:
 	browserify ${SOURCES} --debug --outfile ${DESTINATION}

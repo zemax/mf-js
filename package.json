@@ -1,0 +1,30 @@
+{
+  "name": "mf-js",
+  "version": "1.0.1",
+  "description": "JS Stuffs",
+  "main": "modules/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zemax/mfJSModules.git"
+  },
+  "keywords": [
+    "JS",
+    "tools"
+  ],
+  "author": "Maxime Cousinou",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zemax/mfJSModules/issues"
+  },
+  "homepage": "https://github.com/zemax/mfJSModules#readme",
+  "devDependencies": {
+    "browserify": "^11.2.0",
+    "tape": "^4.2.1"
+  }
+}
