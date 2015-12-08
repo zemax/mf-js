@@ -1,6 +1,6 @@
 {
   "name": "mf-js",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "JS Stuffs",
   "main": "modules/index.js",
   "directories": {
