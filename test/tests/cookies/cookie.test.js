@@ -1,13 +1,14 @@
-var test   = require('tape'),
-	now    = require('../../../modules/date/now'),
-	cookie = require('../../../modules/cookies/cookie');
+import test from 'tape';
+import cookie from '../../../modules/cookies/cookie' ;
 
-test('cookie', function (t) {
-	var cookie_set = 'Hello World ' + now();
-	cookie('test', cookie_set);
+if ( typeof document !== 'undefined' ) {
+	test( 'cookie', function ( t ) {
+		var cookie_set = 'Hello World ' + Date.now();
+		cookie( 'test', cookie_set );
 
-	var cookie_get = cookie('test');
+		var cookie_get = cookie( 'test' );
 
-	t.equal(cookie_set, cookie_get);
-	t.end();
-});
+		t.equal( cookie_set, cookie_get );
+		t.end();
+	} );
+}

@@ -1,11 +1,13 @@
-var test = require('tape'),
-	raf  = require('../../../modules/animation/requestAnimationFrame');
+import test from 'tape';
+import  '../../../modules/animation/requestAnimationFrame';
 
-test('requestAnimationFrame', function (t) {
-	t.plan(3);
-	t.equal(typeof window.requestAnimationFrame, 'function');
-	t.equal(typeof window.cancelAnimationFrame, 'function');
-	window.requestAnimationFrame(function () {
-		t.pass('call');
-	})
-});
+if ( typeof window !== 'undefined' ) {
+	test( 'requestAnimationFrame', function ( t ) {
+		t.plan( 3 );
+		t.equal( typeof window.requestAnimationFrame, 'function' );
+		t.equal( typeof window.cancelAnimationFrame, 'function' );
+		window.requestAnimationFrame( function () {
+			t.pass( 'call' );
+		} )
+	} );
+}

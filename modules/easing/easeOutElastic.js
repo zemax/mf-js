@@ -1,34 +1,41 @@
 /**
  * Elastic Out easing
  *
- * @param    t    current time
- * @param    b    start value
- * @param    c    difference between start and end values
- * @param    d    duration
- * @param    a    amplitude
- * @param    p    period
+ * @param    time    current time
+ * @param    from    start value
+ * @param    offset    difference between start and end values
+ * @param    duration    duration
+ * @param    amplitude    amplitude
+ * @param    period    period
  * @return
  */
-module.exports = function (t, b, c, d, a, p) {
-    if (t == 0) {
-        return (b);
-    }
+const easeOutElastic = ( time, from, offset, duration, amplitude, period ) => {
+	if ( time == 0 ) {
+		return (from);
+	}
 
-    t = t / d;
-    if (t == 1) {
-        return (b + c);
-    }
+	time = time / duration;
+	if ( time == 1 ) {
+		return (from + offset);
+	}
 
-    var s = 0;
-    if (p != 0) {
-        p = d * 0.3;
-    }
-    if (a < Math.abs(c)) {
-        a = c;
-        s = p / 4;
-    } else {
-        s = p / (2 * Math.PI) * Math.asin(c / a);
-    }
+	var s = 0;
+	if ( period != 0 ) {
+		period = duration * 0.3;
+	}
+	if ( amplitude < Math.abs( offset ) ) {
+		amplitude = offset;
+		s         = period / 4;
+	}
+	else {
+		s = period / (2 * Math.PI) * Math.asin( offset / amplitude );
+	}
 
-    return (a * Math.pow(2, -10 * t) * Math.sin((t * d - s) * (2 * Math.PI) / p) + c + b);
+	return (amplitude * Math.pow( 2, -10 * time ) * Math.sin( (time * duration - s) * (2 * Math.PI) / period ) + offset + from);
 };
+
+export default easeOutElastic;
+
+if ( typeof exports === 'object' ) {
+	module.exports = easeOutElastic;
+}

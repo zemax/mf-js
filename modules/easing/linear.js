@@ -1,12 +1,18 @@
 /**
  * Linear easing
  *
- * @param    t    current time
- * @param    b    start value
- * @param    c    difference between start and end values
- * @param    d    duration
+ * @param    time    current time
+ * @param    from    start value
+ * @param    offset    difference between start and end values
+ * @param    duration    duration
  * @return
  */
-module.exports = function (t, b, c, d) {
-    return (b + c * (t / d));
+const linear = ( time, from, offset, duration ) => {
+	return (from + offset * (time / duration));
 };
+
+export default linear;
+
+if ( typeof exports === 'object' ) {
+	module.exports = linear;
+}

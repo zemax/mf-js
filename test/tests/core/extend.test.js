@@ -1,7 +1,7 @@
-var test   = require('tape'),
-	extend = require('../../../modules/core/extend');
+import test from 'tape';
+import extend from '../../../modules/core/extend' ;
 
-test('extend', function (t) {
+test( 'extend', function ( t ) {
 	var a = {
 		name: 'Bob',
 		age:  36,
@@ -20,8 +20,8 @@ test('extend', function (t) {
 		numbers: [ 1, 2, 3 ]
 	}
 
-	extend(a, b);
+	extend( a, b );
 
-	t.deepEqual(a, c);
+	t.deepEqual( a, c );
 	t.end();
-});
+} );
