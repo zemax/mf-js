@@ -24,7 +24,7 @@ function completed() {
 }
 
 function domready( f ) {
-	if ( typeof f != 'function' ) {
+	if ( (typeof f != 'function') || (typeof document == 'undefined') ) {
 		return;
 	}
 
