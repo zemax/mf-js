@@ -1,13 +1,15 @@
 {
 	"name":            "mf-js",
-	"version":         "2.0.2",
+	"version":         "2.0.3",
 	"description":     "JS Stuffs",
 	"main":            "webpack.config.js",
 	"directories":     {
 		"test": "test"
 	},
 	"scripts":         {
-		"test": "webpack --colors --bail && babel-node ./test/main.js | faucet"
+		"test":         "webpack --colors --bail && npm run test:node && npm run test:browser",
+		"test:node":    "node ./test/main.build.js | faucet",
+		"test:browser": "cat ./test/main.build.js | tape-run | faucet"
 	},
 	"repository":      {
 		"type": "git",
@@ -34,6 +36,7 @@
 		"eslint-loader":       "^1.6.1",
 		"faucet":              "0.0.1",
 		"tape":                "^4.6.2",
+		"tape-run":            "^2.1.4",
 		"watch":               "^1.0.1",
 		"webpack":             "^1.13.3",
 		"whatwg-fetch":        "^1.0.0"

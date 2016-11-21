@@ -1,4 +1,4 @@
-# mf JS Modules
+# mf JS modules
 
 My personnal daily used stuffs for JS. Feel free to use it.
 
@@ -31,6 +31,11 @@ require( 'core-js/fn/promise' );
 ```
 
 # Changelog
+
+## 2016/11/21
+- added CSS state for RWD
+- added Fullscreen helper
+- some unit tests improvments
 
 ## 2016/11/18
 - **v2 ! Breaking changes !**
