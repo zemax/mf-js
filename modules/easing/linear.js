@@ -7,12 +7,8 @@
  * @param    duration    duration
  * @return
  */
-const linear = ( time, from, offset, duration ) => {
-	return (from + offset * (time / duration));
+export const linear = ( time, from, offset, duration ) => {
+    return (from + offset * (time / duration));
 };
 
 export default linear;
-
-if ( typeof exports === 'object' ) {
-	module.exports = linear;
-}

@@ -7,13 +7,9 @@
  * @param    duration    duration
  * @return
  */
-const easeOutQuad = ( time, from, offset, duration ) => {
-	time = time / duration;
-	return (-offset * time * (time - 2) + from);
+export const easeOutQuad = ( time, from, offset, duration ) => {
+    time = time / duration;
+    return (-offset * time * (time - 2) + from);
 };
 
 export default easeOutQuad;
-
-if ( typeof exports === 'object' ) {
-	module.exports = easeOutQuad;
-}

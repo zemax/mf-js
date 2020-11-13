@@ -1,5 +1,3 @@
-"use strict";
-
 /*
  Store state in CSS and grab it from JS
 
@@ -29,36 +27,31 @@
  </style>
  */
 
-// import extend from '../core/extend';
-import Observable from '../core/observable' ;
-import ready from '../dom/ready' ;
+import Observable from '../core/observable';
+import ready from '../dom/ready';
 
-let mq_state = 'large';
+let mediaqueryState = 'large';
 
 function setState() {
-	let s = window.getComputedStyle( document.querySelector( 'body' ), ':before' ).getPropertyValue( 'content' ).replace( /\"/g, '' );
-
-	if ( s != mq_state ) {
-		mq_state = s;
-		State.trigger( { type: 'change', state: mq_state } );
-	}
+    let s = window.getComputedStyle( document.querySelector( 'body' ), ':before' ).getPropertyValue( 'content' ).replace( /"/g, '' );
+    
+    if ( s !== mediaqueryState ) {
+        mediaqueryState = s;
+        State.trigger( { type: 'change', state: mediaqueryState } );
+    }
 }
 
 ready( function () {
-	window.addEventListener( 'resize', setState );
-	setState();
+    window.addEventListener( 'resize', setState );
+    setState();
 } );
 
 const State = {
-	getState: function () {
-		return mq_state;
-	}
+    getState: function () {
+        return mediaqueryState;
+    }
 };
 
 Object.assign( State, Observable );
 
 export default State;
-
-if ( typeof exports === 'object' ) {
-	module.exports = State;
-}

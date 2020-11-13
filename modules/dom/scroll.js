@@ -58,22 +58,16 @@ export const smoothScrollTo = ( to, duration = 750, from = false ) => {
     
     animateScroll();
     
-    const r = {
+    return {
         stop:     () => active = false,
         isActive: () => active,
     };
-    
-    return r;
 };
 
-const scroll = {
+export const scroll = {
     position,
     size,
     smoothScrollTo
 };
 
 export default scroll;
-
-if ( typeof exports === 'object' ) {
-    module.exports = scroll;
-}

@@ -10,15 +10,12 @@ import Vector2D from './vector2d';
  * @param    p3    end point
  * @return
  */
-const bezierCubic = ( t, p0, p1, p2, p3 ) => {
-	var t1 = (1 - t);
-	var x  = (t1 * t1 * t1) * p0.x + (3 * t1 * t1 * t) * p1.x + (3 * t1 * t * t) * p2.x + (t * t * t) * p3.x;
-	var y  = (t1 * t1 * t1) * p0.y + (3 * t1 * t1 * t) * p1.y + (3 * t1 * t * t) * p2.y + (t * t * t) * p3.y;
-	return (new Vector2D( x, y ));
+export const bezierCubic = ( t, p0, p1, p2, p3 ) => {
+    const t1 = (1 - t);
+    const x  = (t1 * t1 * t1) * p0.x + (3 * t1 * t1 * t) * p1.x + (3 * t1 * t * t) * p2.x + (t * t * t) * p3.x;
+    const y  = (t1 * t1 * t1) * p0.y + (3 * t1 * t1 * t) * p1.y + (3 * t1 * t * t) * p2.y + (t * t * t) * p3.y;
+    
+    return (new Vector2D( x, y ));
 };
 
 export default bezierCubic;
-
-if ( typeof exports === 'object' ) {
-	module.exports = bezierCubic;
-}
