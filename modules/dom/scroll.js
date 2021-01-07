@@ -45,6 +45,8 @@ export const smoothScrollTo = ( to, duration = 750, from = false ) => {
         
         if ( dt >= duration ) {
             window.scrollTo( 0, to );
+            document.documentElement.style[ 'scroll-behavior' ] = null;
+            
             active = false;
             return;
             
@@ -56,6 +58,7 @@ export const smoothScrollTo = ( to, duration = 750, from = false ) => {
         window.requestAnimationFrame( animateScroll );
     };
     
+    document.documentElement.style[ 'scroll-behavior' ] = 'auto';
     animateScroll();
     
     return {
